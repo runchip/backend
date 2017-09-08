@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>RunChip</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="/filterrequest.js"></script>
+    <script src="/getrequest.js"></script>
+    <script src="/echarts.min.js"></script>
+    <script src="/jquery.datetimepicker.full.js"></script>
+    <link rel="stylesheet" href="/home.css" />
+    <link rel="stylesheet" href="/jquery.datetimepicker.min.css" />
+</head>
+<body>
+<div class=" container">
+    <h1>RunChip</h1>
+    <form id="filterForm">
+        <label>Start Time</label>
+        <input type="text" id="dateTimePickerStart" />
+        <label>End Time</label>
+        <input type="text" id="dateTimePickerEnd" />
+        <button type="button" id="btn" class="btn-primary">Filter</button>
+    </form>
+    <div id="getResultDiv">
+        <ul class="resultList">
+        </ul>
+    </div>
+    <div id="gradientChart" style="width: 1000px; height: 400px;">
+    </div>
+</div>
+</body>
+</html>

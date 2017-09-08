@@ -12,10 +12,18 @@ public class Temperature {
     private long id;
 
     @Column
-    int temp;
+    private int temp;
 
     @Column
-    long time;
+    private long time;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public int getTemp() {
         return temp;

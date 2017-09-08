@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @RestController
 public class SensorController {
@@ -17,7 +19,7 @@ public class SensorController {
     private TempRepository tempRepository;
 
     @RequestMapping("/temp")
-    public Iterable<Temperature> getAllTemps(Long startTime, Long endTime) {
+    public Iterable<Temperature> getAllTemps(@RequestParam(required = false) Long startTime, @RequestParam(required = false) Long endTime) {
         Iterable<Temperature> temps;
         if (startTime!=null && endTime!=null) {
             temps = tempRepository.findByTimeBetween(startTime, endTime);
@@ -25,6 +27,19 @@ public class SensorController {
         else temps = tempRepository.findAll();
         return temps;
     }
+
+    /*@RequestMapping("/temp")
+    public Iterable<Temperature> getAllTemps(@RequestParam(required = false) String startTime, @RequestParam(required = false) String endTime) throws Exception{
+        Iterable<Temperature> temps;
+        if (!startTime.isEmpty() && !endTime.isEmpty()) {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+            Date startDate = sdf.parse(startTime);
+            Date endDate = sdf.parse(endTime);
+            temps = tempRepository.findByTimeBetween(startDate.getTime(), endDate.getTime());
+        }
+        else temps = tempRepository.findAll();
+        return temps;
+    }*/
 
     @RequestMapping(value = "/temp", method = RequestMethod.POST)
     public Temperature saveNewTemp(@RequestParam int temp) {
