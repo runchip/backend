@@ -1,7 +1,11 @@
 $( document ).ready(function() {
 
-    $("#dateTimePickerStart").datetimepicker();
-    $("#dateTimePickerEnd").datetimepicker();
+    $("#dateTimePickerStart").datetimepicker({
+        format:'Y/m/d H:i:s'
+    });
+    $("#dateTimePickerEnd").datetimepicker({
+        format:'Y/m/d H:i:s'
+    });
 
     var url = window.location;
     var startTime = '', endTime = '';
@@ -34,10 +38,7 @@ $( document ).ready(function() {
                         date=UTCTime.getDate();
                     }
 
-                    console.log(UTCTime.getHours());
-                    console.log(UTCTime.getMinutes());
-
-                    myTime.push(UTCTime.getFullYear()+'.'+month+'.'+date+' '+UTCTime.getHours()+':'+UTCTime.getMinutes()+':'+UTCTime.getSeconds());
+                    myTime.push(UTCTime.getFullYear()+'.'+month+'.'+date+'\n'+UTCTime.getHours()+':'+UTCTime.getMinutes()+':'+UTCTime.getSeconds());
                     myTemp.push(result[i].temp);
                 }
 
@@ -123,6 +124,7 @@ $( document ).ready(function() {
                         symbol: 'circle',
                         symbolSize: 5,
                         showSymbol: false,
+                        layout: 'vertical',
                         lineStyle: {
                             normal: {
                                 width: 1
@@ -171,6 +173,10 @@ $( document ).ready(function() {
         event.preventDefault();
         startTime = (new Date($("#dateTimePickerStart").val())).getTime();
         endTime = (new Date($("#dateTimePickerEnd").val())).getTime();
+
+        console.log("startTime: "+startTime);
+        console.log("endTime: "+endTime);
+
         getInfo(startTime, endTime);
     });
 });
