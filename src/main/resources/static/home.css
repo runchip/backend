@@ -1,6 +1,29 @@
 body {
-    background-color:aliceblue;
+    background-color:#394750;
 }
 h1 {
-    color: rgb(137,189,27);
+    color: white;
+}
+#gradientChart{
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);;
+}
+#dateTimePickerStart{
+    border: 2px solid #8385DC;
+    border-radius: 7px;
+    background-color: #6C75C0;
+    color: wheat;
+}
+#dateTimePickerEnd{
+    border: 2px solid #8385DC;
+    border-radius: 7px;
+    background-color: #6C75C0;
+    color: wheat;
+}
+#btn{
+    border: 2px solid #DE66AE;
+    border-radius: 7px;
+    background-color: #B24C8D;
+    color: white;
+    height: 26px;
+    font-family: 'Courier 10 Pitch';
 }

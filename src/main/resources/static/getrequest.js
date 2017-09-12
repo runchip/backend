@@ -7,6 +7,8 @@ $( document ).ready(function() {
         format:'Y/m/d H:i:s'
     });
 
+    $("#gradientChart").height($(document).height()*50/100);
+
     var url = window.location;
     var startTime = '', endTime = '';
 
@@ -48,6 +50,219 @@ $( document ).ready(function() {
 
                 // gradientChart
                 option = {
+                    baseOption: {
+                        backgroundColor: '#274B63',
+                        title: {
+                            text: 'RunChip',
+                            textStyle: {
+                                fontWeight: 'normal',
+                                fontSize: 16,
+                                color: 'white'
+                            },
+                            left: '6%'
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                lineStyle: {
+                                    color: '#57617B'
+                                }
+                            }
+                        },
+                        legend: {
+                            icon: 'rect',
+                            data: ['Temperature'],
+                            textStyle: {
+                                color: '#F1F1F3'
+                            }
+                        },
+                        grid: {
+                            containLabel: true
+                        },
+                        xAxis: [{
+                            type: 'category',
+                            axisLine: {
+                                lineStyle: {
+                                    color: 'white'
+                                }
+                            },
+                            data: myTime
+                        }],
+                        yAxis: [{
+                            type: 'value',
+                            name: 'Value',
+                            axisTick: {
+                                show: false
+                            },
+                            axisLine: {
+                                lineStyle: {
+                                    color: 'white'
+                                }
+                            },
+                            splitLine: {
+                                lineStyle: {
+                                    color: '#57617B'
+                                }
+                            }
+                        }],
+                        series: [{
+                            name: 'Temperature',
+                            type: 'line',
+                            smooth: true,
+                            symbol: 'circle',
+                            symbolSize: 5,
+                            showSymbol: false,
+                            lineStyle: {
+                                normal: {
+                                    width: 1.5
+                                }
+                            },
+                            /*areaStyle: {
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: 'rgba(137, 189, 27, 0.3)'
+                                    }, {
+                                        offset: 0.8,
+                                        color: 'rgba(137, 189, 27, 0)'
+                                    }], false),
+                                    shadowColor: 'rgba(0, 0, 0, 0.1)',
+                                    shadowBlur: 10
+                                }
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: 'rgb(137,189,27)',
+                                    borderColor: 'rgba(137,189,2,0.27)',
+                                    borderWidth: 12
+
+                                }
+                            },*/
+                            areaStyle: {
+                                normal: {
+                                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                                        offset: 0,
+                                        color: '#DE66AE'
+                                    }, {
+                                        offset: 0.8,
+                                        color: 'rgba(178, 76, 141, 0)'
+                                    }], false),
+                                    shadowColor: 'rgba(0, 0, 0, 0.1)',
+                                    shadowBlur: 10
+                                }
+                            },
+                            itemStyle: {
+                                normal: {
+                                    color: '#DE66AE',
+                                    borderColor: 'rgba(178, 76, 141, 0.27)',
+                                    borderWidth: 12
+
+                                }
+                            },
+                            data: myTemp
+                        }]
+                    },
+                    media: [
+                        {
+                            option: {
+                                legend: {
+                                    itemWidth: 14,
+                                    itemHeight: 5,
+                                    itemGap: 13,
+                                    right: '4%',
+                                    textStyle: {
+                                        fontSize: 12
+                                    }
+                                },
+                                grid: {
+                                    left: '3%',
+                                    right: '4%',
+                                    bottom: '3%'
+                                },
+                                xAxis: [{
+                                    boundaryGap: false
+                                }],
+                                yAxis: [{
+                                    axisLabel: {
+                                        margin: 10,
+                                        textStyle: {
+                                            fontSize: 14
+                                        }
+                                    }
+                                }]
+                            }
+                        },
+                        {
+                            query: {maxWidth: 670, minWidth: 550},
+                            option: {
+                                legend: {
+                                    orient: 'horizontal',
+                                    left: 200,
+                                    itemGap: 5
+                                },
+                                grid: {
+                                    left: '10%',
+                                    top: 80,
+                                    right: 90,
+                                    bottom: 100
+                                },
+                                xAxis: {
+                                    nameLocation: 'end',
+                                    nameGap: 10,
+                                    splitNumber: 5,
+                                    splitLine: {
+                                        show: true
+                                    }
+                                },
+                                timeline: {
+                                    orient: 'horizontal',
+                                    inverse: false,
+                                    left: '20%',
+                                    right: '20%',
+                                    bottom: 10,
+                                    height: 40
+                                },
+                                series: [
+                                    {center: ['75%', '30%'], radius: '28%'}
+                                ]
+                            }
+                        },
+                        {
+                            query: {maxWidth: 550},
+                            option: {
+                                legend: {
+                                    orient: 'vertical',
+                                    left: 'right',
+                                    itemGap: 5
+                                },
+                                grid: {
+                                    left: 55,
+                                    top: '32%',
+                                    right: 100,
+                                    bottom: 50
+                                },
+                                xAxis: {
+                                    nameLocation: 'middle',
+                                    nameGap: 25,
+                                    splitNumber: 3
+                                },
+                                timeline: {
+                                    orient: 'vertical',
+                                    inverse: true,
+                                    right: 10,
+                                    top: 150,
+                                    bottom: 10,
+                                    width: 55
+                                },
+                                series: [
+                                    {center: ['45%', '20%'], radius: '28%'}
+                                ]
+                            }
+                        }
+                    ]
+                };
+
+                /*option = {
                     backgroundColor: '#394056',
                     title: {
                         text: 'RunChip',
@@ -152,7 +367,7 @@ $( document ).ready(function() {
                         },
                         data: myTemp
                     }]
-                };
+                };*/
 
                 gradientChart.setOption(option);
 
