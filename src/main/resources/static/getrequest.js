@@ -124,7 +124,6 @@ $( document ).ready(function() {
                         symbol: 'circle',
                         symbolSize: 5,
                         showSymbol: false,
-                        layout: 'vertical',
                         lineStyle: {
                             normal: {
                                 width: 1
@@ -171,12 +170,20 @@ $( document ).ready(function() {
     $("#btn").click(function(event) {
         // Prevent the form from submitting via the browser.
         event.preventDefault();
-        startTime = (new Date($("#dateTimePickerStart").val())).getTime();
-        endTime = (new Date($("#dateTimePickerEnd").val())).getTime();
+        if ($("#dateTimePickerStart").val() == ''|| $("#dateTimePickerEnd").val() == '') {
+            alert("Set a date!");
+        }
+        else {
+            startTime = (new Date($("#dateTimePickerStart").val())).getTime();
+            endTime = (new Date($("#dateTimePickerEnd").val())).getTime();
 
-        console.log("startTime: "+startTime);
-        console.log("endTime: "+endTime);
+            console.log("startTime: " + startTime);
+            console.log("endTime: " + endTime);
 
-        getInfo(startTime, endTime);
+            $("#dateTimePickerStart").val('');
+            $("#dateTimePickerEnd").val('');
+
+            getInfo(startTime, endTime);
+        }
     });
 });
