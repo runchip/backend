@@ -9,6 +9,9 @@ $( document ).ready(function() {
 
     $("#gradientChart").height($(document).height()*50/100);
 
+    // based on prepared DOM, initialize echarts instance
+    var gradientChart = echarts.init(document.getElementById('gradientChart'));
+
     var url = window.location;
     var startTime = '', endTime = '';
 
@@ -43,10 +46,6 @@ $( document ).ready(function() {
                     myTime.push(UTCTime.getFullYear()+'.'+month+'.'+date+'\n'+UTCTime.getHours()+':'+UTCTime.getMinutes()+':'+UTCTime.getSeconds());
                     myTemp.push(result[i].temp);
                 }
-
-
-                // based on prepared DOM, initialize echarts instance
-                var gradientChart = echarts.init(document.getElementById('gradientChart'));
 
                 // gradientChart
                 option = {
@@ -214,14 +213,6 @@ $( document ).ready(function() {
                                         show: true
                                     }
                                 },
-                                timeline: {
-                                    orient: 'horizontal',
-                                    inverse: false,
-                                    left: '20%',
-                                    right: '20%',
-                                    bottom: 10,
-                                    height: 40
-                                },
                                 series: [
                                     {center: ['75%', '30%'], radius: '28%'}
                                 ]
@@ -245,14 +236,6 @@ $( document ).ready(function() {
                                     nameLocation: 'middle',
                                     nameGap: 25,
                                     splitNumber: 3
-                                },
-                                timeline: {
-                                    orient: 'vertical',
-                                    inverse: true,
-                                    right: 10,
-                                    top: 150,
-                                    bottom: 10,
-                                    width: 55
                                 },
                                 series: [
                                     {center: ['45%', '20%'], radius: '28%'}
@@ -368,7 +351,6 @@ $( document ).ready(function() {
                         data: myTemp
                     }]
                 };*/
-
                 gradientChart.setOption(option);
 
             },
@@ -392,13 +374,16 @@ $( document ).ready(function() {
             startTime = (new Date($("#dateTimePickerStart").val())).getTime();
             endTime = (new Date($("#dateTimePickerEnd").val())).getTime();
 
-            console.log("startTime: " + startTime);
-            console.log("endTime: " + endTime);
-
             $("#dateTimePickerStart").val('');
             $("#dateTimePickerEnd").val('');
 
             getInfo(startTime, endTime);
+        }
+    });
+
+    $(window).on('resize', function(){
+        if(gradientChart != null && gradientChart != undefined){
+            gradientChart.resize();
         }
     });
 });

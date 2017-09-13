@@ -15,17 +15,31 @@
 <div class=" container">
     <p style="font-family: 'Courier 10 Pitch'; font-size: 30px; color: white">RunChip</p>
     <form id="filterForm">
-        <label style="color: white; font-family: 'Courier 10 Pitch';">Start Time</label>
-        <input type="text" id="dateTimePickerStart" />
-        <label style="color: white; font-family: 'Courier 10 Pitch';">End Time</label>
-        <input type="text" id="dateTimePickerEnd" />
-        <button type="button" id="btn" class="btn-primary">Filter</button>
+        <div id="startTimeDiv">
+            <div class="labelDiv">
+                <label class="label" style="color: white; font-family: 'Courier 10 Pitch';">Start Time</label>
+            </div>
+            <div id="startTimeInputDiv">
+                <input type="text" id="dateTimePickerStart" />
+            </div>
+        </div>
+        <div id="endTimeDiv">
+            <div class="labelDiv">
+                <label class="label" style="color: white; font-family: 'Courier 10 Pitch';">End Time</label>
+            </div>
+            <div id="endTimeInputDiv">
+                <input type="text" id="dateTimePickerEnd" />
+            </div>
+        </div>
+        <div>
+            <button type="button" id="btn" class="btn-primary">Filter</button>
+        </div>
     </form>
     <div id="getResultDiv">
         <ul class="resultList">
         </ul>
     </div>
-    <div id="gradientChart" style="width: 100%; height: 1080px;">
+    <div id="gradientChart" style="width: 100%; min-height: 400px;">
     </div>
 </div>
 </body>
