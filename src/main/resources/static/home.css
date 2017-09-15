@@ -63,7 +63,7 @@ h1 {
         margin-top: 5px;
     }
 }
-@media screen and (min-height: 960px){
+@media screen and (height: 960px){
     #filterForm{
         width: 0;
     }

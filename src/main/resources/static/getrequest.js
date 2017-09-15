@@ -16,6 +16,9 @@ $( document ).ready(function() {
     var startTime = '', endTime = '';
 
     function getInfo(startTime, endTime) {
+        console.log("Got here!");
+        console.log("startTime: "+startTime);
+        console.log("endTime: "+endTime);
         $.ajax({
             type : "GET",
             url : url + "temp",
@@ -362,6 +365,10 @@ $( document ).ready(function() {
     }
 
     getInfo(startTime, endTime);
+
+    setInterval(function() {
+        getInfo(startTime, endTime);
+    }, 5000);
 
     // SUBMIT FORM
     $("#btn").click(function(event) {
