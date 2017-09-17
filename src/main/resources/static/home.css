@@ -47,7 +47,7 @@ h1 {
 #endTimeInputDiv{
     float: right;
 }
-@media screen and (max-width: 414px){
+/*@media screen and (max-width: 414px){
     #filterForm{
         width: 0;
     }
@@ -61,6 +61,66 @@ h1 {
     }
     #btn{
         margin-top: 5px;
+    }
+}
+@media screen and (height: 960px){
+    #filterForm{
+        width: 0;
+    }
+    #btn{
+        margin-top: 5px;
+    }
+}*/
+@media screen and (max-width: 414px){
+    /*#filterForm{
+        width: 0;
+    }*/
+    #btn{
+        margin-top: 5px;
+    }
+    #startTimeDiv{
+        float: none;
+    }
+    #endTimeDiv{
+        float: none;
+    }
+    .labelDiv{
+        float: none;
+    }
+    .label{
+        margin-right: 5px;
+    }
+    #startTimeInputDiv{
+        float: none;
+    }
+    #endTimeInputDiv{
+        float: none;
+    }
+}
+@media screen and (max-height: 390px){
+    /*#filterForm{
+        width: 0;
+    }*/
+    #btn{
+        margin-top: 5px;
+    }
+    #startTimeDiv{
+        float: none;
+    }
+    #endTimeDiv{
+        float: none;
+    }
+    .labelDiv{
+        float: none;
+    }
+    .label{
+        margin-right: 5px;
+    }
+    #startTimeInputDiv{
+        float: none;
+    }
+    #endTimeInputDiv{
+        float: none;
     }
 }
 @media screen and (height: 960px){
